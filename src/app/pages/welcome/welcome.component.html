@@ -1,0 +1,112 @@
+<nz-page-header class="site-page-header">
+  <!--breadcrumb-->
+  <nz-breadcrumb nz-page-header-breadcrumb>
+    <nz-breadcrumb-item>Javaci Bank</nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <a>Welcome</a>
+    </nz-breadcrumb-item>
+
+  </nz-breadcrumb>
+
+  <!--title-->
+  <nz-page-header-title>Welcome to Javacibank online banking client.</nz-page-header-title>
+
+  <!--subtitle-->
+  <nz-page-header-subtitle>{{today | date:'fullDate'}}</nz-page-header-subtitle>
+
+  <!--tags-->
+
+
+  <!--content-->
+  <nz-page-header-content>
+    <div nz-row>
+      <div class="content">
+        <p nz-paragraph>
+          Manage your accounts, send money, track your expenses and more...
+        </p>
+        <p nz-paragraph>
+          Please login or register for an account to start using our award winning  online banking right away.
+        </p>
+        <div class="content-link">
+          <a routerLink="/login"><i nz-icon nzType="login" nzTheme="outline" ></i><span style="margin-left: 3px;">Login</span></a>
+          <a routerLink="/register"> <i nz-icon nzType="user-add" nzTheme="outline"></i><span style="margin-left: 3px;">Register</span> </a>
+          <a routerLink="/welcome">  <i nz-icon nzType="contacts" nzTheme="outline"></i><span style="margin-left: 3px;">Contact</span> </a>
+        </div>
+      </div>
+      <div class="content-image">
+        <img src="https://gw.alipayobjects.com/zos/antfincdn/K%24NnlsB%26hz/pageHeader.svg" alt="content" />
+      </div>
+    </div>
+  </nz-page-header-content>
+</nz-page-header>
+
+<nz-divider nzText="Market snapshot..."></nz-divider>
+
+<div nz-row>
+  <div nz-col [nzXs]="{ span: 5, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+    <nz-card>
+      <nz-timeline>
+        <nz-timeline-item nzColor="green">Consumer Prices Broadly Rebounded in August</nz-timeline-item>
+        <nz-timeline-item nzColor="green">Solve initial network problems 2015-09-01</nz-timeline-item>
+        <nz-timeline-item nzColor="red">
+          Global Economic Recovery Shows Signs of Slowing
+        </nz-timeline-item>
+
+
+      </nz-timeline>
+    </nz-card>
+  </div>
+  <div nz-col [nzXs]="{ span: 11, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+    <nz-card >
+      <nz-statistic
+        [nzValue]="(11.28 | number: '1.0-2')!"
+        [nzTitle]="'Dow Jones'"
+        [nzPrefix]="prefixTplOne"
+        [nzSuffix]="'%'"
+        [nzValueStyle]="{ color: '#3F8600' }"
+      >
+      </nz-statistic>
+      <ng-template #prefixTplOne><i nz-icon nzType="arrow-up"></i></ng-template>
+
+      <nz-divider ></nz-divider>
+      <nz-statistic
+        [nzValue]="(3.46| number: '1.0-2')!"
+        [nzTitle]="'BRK-B'"
+        [nzPrefix]="prefixTpl4"
+        [nzSuffix]="'%'"
+        [nzValueStyle]="{ color: '#3F8600' }"
+      >
+      </nz-statistic>
+      <ng-template #prefixTpl4><i nz-icon nzType="arrow-up"></i></ng-template>
+    </nz-card>
+  </div>
+  <div nz-col [nzXs]="{ span: 11, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+    <nz-card >
+      <nz-statistic
+        [nzValue]="(6.28 | number: '1.0-2')!"
+        [nzTitle]="'S&P 500'"
+        [nzPrefix]="prefixTplTwo"
+        [nzSuffix]="'%'"
+        [nzValueStyle]="{ color: '#86002a' }"
+      >
+      </nz-statistic>
+      <ng-template #prefixTplTwo><i nz-icon nzType="arrow-down"></i></ng-template>
+      <nz-divider ></nz-divider>
+      <nz-statistic
+        [nzValue]="(6.5 | number: '1.0-2')!"
+        [nzTitle]="'IMKB 100'"
+        [nzPrefix]="prefixTpl3"
+        [nzSuffix]="'%'"
+        [nzValueStyle]="{ color: '#3F8600' }"
+      >
+      </nz-statistic>
+      <ng-template #prefixTpl3><i nz-icon nzType="arrow-up"></i></ng-template>
+    </nz-card>
+  </div>
+
+</div>
+
+
+
+
+
