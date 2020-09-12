@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {AuthService, IUser} from './auth.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   isCollapsed = false;
+  myAccountLink = 'link';
+  $user:Observable<IUser>
+  constructor(private authService:AuthService) {
+  }
+  ngOnInit() {
+    this.$user = this.authService.getUser()
+  }
+
 }

@@ -1,4 +1,4 @@
-<nz-page-header class="site-page-header">
+<nz-page-header *ngIf="!($user|async)" class="site-page-header">
   <!--breadcrumb-->
   <nz-breadcrumb nz-page-header-breadcrumb>
     <nz-breadcrumb-item>Javaci Bank</nz-breadcrumb-item>
@@ -40,9 +40,10 @@
   </nz-page-header-content>
 </nz-page-header>
 
-<nz-divider nzText="Market snapshot..."></nz-divider>
 
-<div nz-row>
+
+<div nz-row *ngIf="($user|async)">
+  <nz-divider nzText="Market snapshot..."></nz-divider>
   <div nz-col [nzXs]="{ span: 5, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
     <nz-card>
       <nz-timeline>

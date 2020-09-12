@@ -9,16 +9,22 @@ import {AuthService} from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   validateForm!: FormGroup;
-
+  isLoading = false;
   submitForm(): void {
+    this.isLoading =true;
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
     console.log("This.Form : ", this.validateForm.value)
     this.authService.doLogin({username:this.validateForm.value.userName , password:this.validateForm.value.password})
-      .then(res => console.log("Res => ", res))
-      .catch(err => console.log("Err : ", err))
+      .then(res => {
+        this.isLoading =false;
+        console.log('Res => ', res);
+      })
+      .catch(err => {
+        this.isLoading =false;
+      })
   }
 
   constructor(private fb: FormBuilder, private authService: AuthService) {

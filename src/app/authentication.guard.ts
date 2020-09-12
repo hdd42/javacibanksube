@@ -15,7 +15,7 @@ export class AuthenticationGuard implements CanActivate, CanActivateChild, CanDe
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+    return this.authService.isLoggedIn();
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,
