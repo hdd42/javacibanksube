@@ -1,6 +1,14 @@
 <div nz-row nzJustify="space-around" nzAlign="middle">
 
   <div nz-col style="min-width: 400px">
+    <nz-alert *ngIf="error"
+      nzType="error"
+      nzCloseable
+      nzMessage="Something went wrong!"
+      nzDescription="{{error.message}}"
+
+    >
+    </nz-alert>
     <nz-card nzTitle="Login to Your Account.">
       <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
         <nz-form-item>

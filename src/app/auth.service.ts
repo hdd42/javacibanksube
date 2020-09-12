@@ -10,6 +10,7 @@ export class AuthService {
   user :BehaviorSubject<IUser> ;
   constructor(private http: HttpClient, @Inject('API') private api) {
     this.user = new BehaviorSubject<IUser>(null)
+    setTimeout(()=>this.user.next({id:'dev',name:"dev user"}),2000)
   }
 
   doLogin({username, password}): Promise<any> {
@@ -50,6 +51,28 @@ export class AuthService {
 
   isLoggedIn():boolean{
     return !!localStorage.getItem('token');
+  }
+
+  doRegister(
+    citizenNumber:string, name:string,  lastName:string,  email:string,
+    password:string,birthDate?:string,phoneNumber?:string,middleName?:string
+  ):Promise<any>{
+    let status ="UNAPPROVED"
+    let url = `${this.api}/api/customer/add`;
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+       Authorization:localStorage.getItem('token')
+    });
+
+    return this.http.post(url, {citizenNumber, name,lastName,email,password,birthDate,phoneNumber,middleName}, { headers})
+      .toPromise()
+      .then(response => {
+        console.log('response',response);
+
+      })
+      .catch(error =>{
+        return {message: error.message || 'Something went wrong!', success: false};
+      })
   }
 
 }

@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TransactionshomeComponent } from './transactionshome/transactionshome.component';
+import {TransactionsRoutingModule} from './transactions-routing.module';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [TransactionshomeComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    TransactionsRoutingModule
+  ],
+  exports:[TransactionshomeComponent]
 })
 export class TransactionsModule { }

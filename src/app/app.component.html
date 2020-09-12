@@ -6,7 +6,7 @@
             [(nzCollapsed)]="isCollapsed"
             [nzTrigger]="null">
     <div class="sidebar-logo">
-      <a href="https://ng.ant.design/" target="_blank">
+      <a href="http://javacibank.com/" target="_blank">
         <img src="http://javacibank.com/images/logo/javaci-logo.png" alt="logo">
         <h1>Javaci Bank</h1>
       </a>
@@ -18,10 +18,10 @@
             <a routerLink="/welcome">Welcome</a>
           </li>
           <li nz-menu-item nzMatchRouter *ngIf="($user|async)">
-            <a>Accounts</a>
+            <a routerLink="/accounts">Accounts</a>
           </li>
           <li nz-menu-item nzMatchRouter *ngIf="($user|async)">
-            <a>Transactions</a>
+            <a routerLink="/transactions">Transactions</a>
           </li>
         </ul>
       </li>
@@ -50,7 +50,7 @@
 
             <button (mouseover)="myAccountLink='primary'" (mouseout)="myAccountLink='link'" nz-button [nzType]="myAccountLink"><i nz-icon nzType="profile" nzTheme="outline"></i>My Account</button>
             <button nz-button nzType="info" nz-popover nzPopoverTitle="Notifications" [nzPopoverContent]="popContentTemplate" nzPopoverPlacement="bottomLeft">  <i nz-icon nzType="notification" class="ant-scroll-number-custom-component" ></i> 9</button>
-            <button  nz-button nzType="warning"><i nz-icon nzType="logout" nzTheme="outline"></i>Log out</button>
+            <button (click)="logout()"  nz-button nzType="warning"><i nz-icon nzType="logout" nzTheme="outline"></i>Log out</button>
           </nz-button-group>
 
         </div>

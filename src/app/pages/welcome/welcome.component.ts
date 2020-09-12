@@ -10,6 +10,7 @@ import {AuthService, IUser} from '../../auth.service';
 export class WelcomeComponent implements OnInit {
   $user:Observable<IUser>
   today;
+  accountSummary =false;
   constructor(private authService:AuthService) {
   }
   ngOnInit() {

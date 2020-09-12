@@ -1,4 +1,4 @@
-<nz-page-header *ngIf="!($user|async)" class="site-page-header">
+<nz-page-header  class="site-page-header">
   <!--breadcrumb-->
   <nz-breadcrumb nz-page-header-breadcrumb>
     <nz-breadcrumb-item>Javaci Bank</nz-breadcrumb-item>
@@ -18,7 +18,7 @@
 
 
   <!--content-->
-  <nz-page-header-content>
+  <nz-page-header-content *ngIf="!($user|async)">
     <div nz-row>
       <div class="content">
         <p nz-paragraph>
@@ -40,74 +40,29 @@
   </nz-page-header-content>
 </nz-page-header>
 
+<div nz-row [nzGutter]="8" *ngIf="($user|async) && !accountSummary" >
+  <nz-divider nzText="Account Summary"></nz-divider>
 
-
-<div nz-row *ngIf="($user|async)">
-  <nz-divider nzText="Market snapshot..."></nz-divider>
-  <div nz-col [nzXs]="{ span: 5, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
-    <nz-card>
-      <nz-timeline>
-        <nz-timeline-item nzColor="green">Consumer Prices Broadly Rebounded in August</nz-timeline-item>
-        <nz-timeline-item nzColor="green">Solve initial network problems 2015-09-01</nz-timeline-item>
-        <nz-timeline-item nzColor="red">
-          Global Economic Recovery Shows Signs of Slowing
-        </nz-timeline-item>
-
-
-      </nz-timeline>
+  <div nz-col [nzSpan]="8">
+    <nz-card nzTitle="Accounts Summary">
+      <nz-empty  [nzNotFoundContent]="contentTpl"></nz-empty>
     </nz-card>
   </div>
-  <div nz-col [nzXs]="{ span: 11, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
-    <nz-card >
-      <nz-statistic
-        [nzValue]="(11.28 | number: '1.0-2')!"
-        [nzTitle]="'Dow Jones'"
-        [nzPrefix]="prefixTplOne"
-        [nzSuffix]="'%'"
-        [nzValueStyle]="{ color: '#3F8600' }"
-      >
-      </nz-statistic>
-      <ng-template #prefixTplOne><i nz-icon nzType="arrow-up"></i></ng-template>
+  <div nz-col [nzSpan]="8">
+    <nz-card nzTitle="Transaction Summary">
+      <nz-empty  [nzNotFoundContent]="contentTpl"></nz-empty>
+    </nz-card>
+  </div>
+  <div nz-col [nzSpan]="8">
+    <nz-card nzTitle="Notification Summary">
+      <nz-empty  [nzNotFoundContent]="contentTpl"></nz-empty>
+    </nz-card>
+  </div>
 
-      <nz-divider ></nz-divider>
-      <nz-statistic
-        [nzValue]="(3.46| number: '1.0-2')!"
-        [nzTitle]="'BRK-B'"
-        [nzPrefix]="prefixTpl4"
-        [nzSuffix]="'%'"
-        [nzValueStyle]="{ color: '#3F8600' }"
-      >
-      </nz-statistic>
-      <ng-template #prefixTpl4><i nz-icon nzType="arrow-up"></i></ng-template>
-    </nz-card>
-  </div>
-  <div nz-col [nzXs]="{ span: 11, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
-    <nz-card >
-      <nz-statistic
-        [nzValue]="(6.28 | number: '1.0-2')!"
-        [nzTitle]="'S&P 500'"
-        [nzPrefix]="prefixTplTwo"
-        [nzSuffix]="'%'"
-        [nzValueStyle]="{ color: '#86002a' }"
-      >
-      </nz-statistic>
-      <ng-template #prefixTplTwo><i nz-icon nzType="arrow-down"></i></ng-template>
-      <nz-divider ></nz-divider>
-      <nz-statistic
-        [nzValue]="(6.5 | number: '1.0-2')!"
-        [nzTitle]="'IMKB 100'"
-        [nzPrefix]="prefixTpl3"
-        [nzSuffix]="'%'"
-        [nzValueStyle]="{ color: '#3F8600' }"
-      >
-      </nz-statistic>
-      <ng-template #prefixTpl3><i nz-icon nzType="arrow-up"></i></ng-template>
-    </nz-card>
-  </div>
 
 </div>
 
 
-
-
-
+<ng-template #contentTpl>
+  <span> Your summary is not available at this time! <a routerLink="/contact">Have a question?</a> </span>
+</ng-template>

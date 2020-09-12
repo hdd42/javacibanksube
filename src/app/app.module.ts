@@ -17,6 +17,7 @@ import {LoginComponent} from './login/login.component';
 import {AntUiModule} from './ant-ui.module';
 import {RegisterComponent} from './register/register.component';
 import {environment} from '../environments/environment';
+import { Four04Component } from './four04/four04.component';
 
 registerLocaleData(en);
 
@@ -24,7 +25,8 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    Four04Component
   ],
   imports: [
     BrowserModule,
