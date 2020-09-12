@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {NzMessageService} from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,9 @@ export class RegisterComponent implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
+    this.message.create('warning',
+      `register for an account will be limited to the back office staff.
+      Please login as a/a for now. `);
   }
 
   updateConfirmValidator(): void {
@@ -31,23 +35,22 @@ export class RegisterComponent implements OnInit {
     return {};
   };
 
-  getCaptcha(e: MouseEvent): void {
-    e.preventDefault();
-  }
 
-  constructor(private fb: FormBuilder) {}
+
+  constructor(private fb: FormBuilder,private message: NzMessageService) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       email: [null, [Validators.email, Validators.required]],
       password: [null, [Validators.required]],
+      middleName: [null],
+      name: [null, [Validators.required]],
       checkPassword: [null, [Validators.required, this.confirmationValidator]],
-      nickname: [null, [Validators.required]],
-      phoneNumberPrefix: ['+86'],
+      lastName: [null, [Validators.required]],
+      birthDate: [null, [Validators.required]],
       phoneNumber: [null, [Validators.required]],
-      website: [null, [Validators.required]],
-      captcha: [null, [Validators.required]],
-      agree: [false]
+      phoneNumberPrefix: [null,[Validators.required]],
+      citizenNumber: [null, [Validators.required]]
     });
   }
 }

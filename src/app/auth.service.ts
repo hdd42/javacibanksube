@@ -1,6 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {environment} from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,12 @@ export class AuthService {
   user :BehaviorSubject<IUser> ;
   constructor(private http: HttpClient, @Inject('API') private api) {
     this.user = new BehaviorSubject<IUser>(null)
-    setTimeout(()=>this.user.next({id:'dev',name:"dev user"}),2000)
+
+    if (!environment.production){
+      //simulate login for development
+      setTimeout(()=>this.user.next({id:'dev',name:"dev user"}),2000)
+    }
+
   }
 
   doLogin({username, password}): Promise<any> {
