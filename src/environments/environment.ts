@@ -8,7 +8,8 @@ export const environment = {
     key:"LqCeUGPSYFlbTDp6AeEXYTBufWlyBEpD",
     linkGainers:"https://api.polygon.io/v2/snapshot/locale/global/markets/forex/gainers?"
   },
-  api:'http://localhost:3000'
+  //api:'http://localhost:3000'
+  api:'http://api.javaci.com',
 };
 
 /*
